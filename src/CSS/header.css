@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+header {
+  z-index: 0;
+  flex: 0 64px;
+  display: flex;
+  background-color: rgb(211, 227, 230);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.24);
+}
+
+header .settings {
+  flex: 0 0 auto;
+  order: 2;
+  justify-content: flex-end;
+}
+
+header .branding, header .page-details, header .settings {
+  display: flex;
+  align-items: center;
+}
+
+header .branding {
+  flex: 0 0 auto;
+  order: 0;
+  justify-content: flex-start;
+}
+
+header .page-details {
+  flex: 1 1 100%;
+  order: 1;
+  padding: 0 24px;
+  overflow: hidden;
+}
+
+header .page-details .title {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.menu-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  margin: 8px;
+}
+.menu-button:hover {
+    background: rgba(0,0,0,0.08);
+    cursor: pointer;
+}
+
+/*@media screen and (min-width: 1024px) {
+  .branding {
+    padding: 0 24px;
+  }
+  .menu-toggle {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+
+  header .settings .profile {
+    display: none;
+  }
+  header .branding, header .settings {
+    flex: 0 0 64px;
+  }
+  header .page-details {
+    padding: 0 24px;
+    justify-content: center;
+  }
+}*/

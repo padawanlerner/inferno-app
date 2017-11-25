@@ -1,0 +1,22 @@
+/*Put all general fonts and shit in this css, along with anything that does layout. Component specifc styles
+get imported into component*/
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+html {
+  box-sizing: border-box;
+}
+html, body, #root {
+  /*set all of the outermost containers height to 100%*/
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  font-family: sans-serif;
+}
+
+#outer-wrap {
+  margin: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}

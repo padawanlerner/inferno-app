@@ -1,0 +1,58 @@
+nav {
+  background: rgb(250, 249, 247);
+  flex: 0 0 256px;
+  overflow: auto;
+  order: 0;
+  border-right: 1px solid rgb(217, 217, 217);
+  position: absolute;
+  top: 0;
+  width: 256px;
+  height: 100%;
+  display: block;
+  transition: all 0.2s ease;
+
+}
+
+.open {
+  left: 0;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.24);
+}
+.closed {
+  left: -256px;
+}
+
+nav ul {
+  height: 80%;
+  list-style: none;
+  margin: 8px 0;
+}
+
+nav ul li {
+  display: flex;
+  align-items: center;
+  height: 56px;
+  padding: 0 20px;
+  text-decoration: none;
+  color: black;
+}
+
+nav ul li span {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+nav ul li:hover {
+  background: rgba(0, 0, 0, 0.06);
+  cursor: pointer;
+}
+
+nav ul li i {
+  margin-right: 20px;
+  opacity: 0.5;
+}
+
+@media screen and (max-width:1024px) {
+
+
+}
