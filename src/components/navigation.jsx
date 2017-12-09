@@ -1,32 +1,39 @@
 // import Inferno from 'inferno';
-import { Link } from 'inferno-router';
+// import { a } from 'inferno-router';
 import '../CSS/nav.css'
+import history from '../history'
 //use reactcsstransitions group to mount the navbar when something is clicked,
 // and unmount it when it is clicked again
 
 const NavBar=(props) => {
+
+  const transition = (theEvent) =>{
+    theEvent.preventDefault();
+    console.log(theEvent)
+    console.log(history)
+    history.push({
+      pathname: theEvent.currentTarget.pathname,
+      search: theEvent.currentTarget.search
+    });
+  }
+
   return (
     <nav className={props.showNav ? "open":"closed"}>
       <ul>
         <li>
-          <Link to="/">
+          <a href="/" onclick = {transition}>
             <span>Home</span>
-          </Link>
+          </a>
         </li>
         <li>
-          <Link to="/feedlist">
-            <span>Feeds</span>
-          </Link>
-        </li>
-        <li>
-          <Link to="/sponsors">
+          <a href="sponsors" onclick = {transition}>
             <span>Sponsors</span>
-          </Link>
+          </a>
         </li>
         <li>
-          <Link to="/login">
+          <a href="/login" onclick = {transition}>
             <span>Login/My Account</span>
-          </Link>
+          </a>
         </li>
       </ul>
     </nav>
@@ -39,7 +46,7 @@ export default NavBar;
 
 
 // <li>
-//   <Link to="/charities">
+//   <a href="/charities">
 //     <span>Causes</span>
-//   </Link>
+//   </a>
 // </li>

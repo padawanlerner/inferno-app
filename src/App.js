@@ -1,11 +1,21 @@
 // import { version } from 'inferno';
 import Component from 'inferno-component';
-// import { Router, Route, IndexRoute } from 'inferno-router';
 
 import './registerServiceWorker';
+import history from './history';
 // import Logo from './logo';
 import HeaderBar from './components/headerBar.jsx';
 import NavBar from './components/navigation.jsx';
+import Home from './components/home.jsx';
+import Sponsors from './components/sponsors.jsx';
+
+// import createHistory from 'history/createBrowserHistory';
+
+// const browserHistory=createHistory();
+const routes = [
+  {path: '/', action: () =><Home/>},
+  {path: '/sponsors', action: () =><Sponsors/>},
+]
 
 class App extends Component {
   constructor(){
@@ -16,6 +26,18 @@ class App extends Component {
     };
     this.openNav=this.openNav.bind(this);
     this.hideNav=this.hideNav.bind(this);
+  }
+
+  router(theRoutes, thePath){
+    let returnComponent = 'nuthin';
+    console.log("thePath: "+thePath)
+    for (const aRoute of theRoutes) {
+      // console.log(aRoute.path )
+      if (aRoute.path === thePath) {
+        returnComponent = aRoute.action()
+      }
+    }
+    return returnComponent;
   }
 
   openNav(){
@@ -31,7 +53,8 @@ class App extends Component {
         <div className="site-body">
           <NavBar showNav={this.state.nav_visible}/>
           <main onClick={this.hideNav}>
-            <p>howdy howdy howdy</p>
+
+            {this.router(routes, history.location.pathname)}
           </main>
         </div>
       </div>
