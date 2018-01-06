@@ -11,7 +11,6 @@ import Sponsors from './components/sponsors.jsx';
 
 // import createHistory from 'history/createBrowserHistory';
 
-// const browserHistory=createHistory();
 const routes = [
   {path: '/', action: () =><Home/>},
   {path: '/sponsors', action: () =><Sponsors/>},
@@ -22,23 +21,30 @@ class App extends Component {
     super();
     //store all the local state that you don't get from the server here
     this.state={
-      nav_visible: false
+      nav_visible: false,
+      route_changed: false
     };
-    this.openNav=this.openNav.bind(this);
-    this.hideNav=this.hideNav.bind(this);
+    this.openNav = this.openNav.bind(this);
+    this.hideNav = this.hideNav.bind(this);
+    this.Router = this.router.bind(this);
+    // this.routeChanged=this.routeChanged.bind(this);
   }
 
-  router(theRoutes, thePath){
-    let returnComponent = 'nuthin';
-    console.log("thePath: "+thePath)
-    for (const aRoute of theRoutes) {
-      // console.log(aRoute.path )
-      if (aRoute.path === thePath) {
-        returnComponent = aRoute.action()
-      }
-    }
-    return returnComponent;
-  }
+  // router(theRoutes, thePath){
+  //   // this works, but I need to figure out a way to trigger a rerender when the route changes
+  //   // right now it only updates when I toggle the menu
+  //   let returnComponent = 'nuthin';
+  //   // let rr = !this.state.route_changed
+  //   // console.log("thePath: "+thePath)
+  //   for (const aRoute of theRoutes) {
+  //     // console.log(aRoute.path )
+  //     if (aRoute.path === thePath) {
+  //       returnComponent = aRoute.action()
+  //       // this.setState({route_changed: rr});
+  //     }
+  //   }
+  //   return returnComponent;
+  // }
 
   openNav(){
     this.setState({nav_visible: true});
@@ -46,6 +52,10 @@ class App extends Component {
   hideNav(){
     this.setState({nav_visible: false});
   }
+  // {history.listen((location, action)=>{
+  //     return this.Router(routes, location.pathname);
+  //     console.log(location.pathname)
+  //   })}
   render() {
     return (
       <div id="outer-wrap">
@@ -53,13 +63,11 @@ class App extends Component {
         <div className="site-body">
           <NavBar showNav={this.state.nav_visible}/>
           <main onClick={this.hideNav}>
-
-            {this.router(routes, history.location.pathname)}
           </main>
         </div>
       </div>
     );
   }
-}
+ }
 
 export default App;

@@ -2,15 +2,13 @@
 // import { a } from 'inferno-router';
 import '../CSS/nav.css'
 import history from '../history'
-//use reactcsstransitions group to mount the navbar when something is clicked,
-// and unmount it when it is clicked again
 
 const NavBar=(props) => {
 
   const transition = (theEvent) =>{
     theEvent.preventDefault();
-    console.log(theEvent)
-    console.log(history)
+    // console.log(theEvent)
+    // console.log(history)
     history.push({
       pathname: theEvent.currentTarget.pathname,
       search: theEvent.currentTarget.search
